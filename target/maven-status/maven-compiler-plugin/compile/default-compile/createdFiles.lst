@@ -1,2 +1,3 @@
-com\cisco\interview\controllers\SiteController.class
-com\interview\cisco\WebsiteComparison\App.class
+com\cisco\websitecomparison\App.class
+com\cisco\websitecomparison\controllers\SiteController.class
+com\cisco\websitecomparison\services\CompareWebsiteService.class

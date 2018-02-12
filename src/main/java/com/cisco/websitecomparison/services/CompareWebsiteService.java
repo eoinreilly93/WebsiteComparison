@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompareWebsiteService {
 	
-	public String getUrlBody(String url) {
+	public String getUrlContentText(String url) {
 		
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);

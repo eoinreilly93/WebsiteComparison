@@ -1,1 +1,2 @@
-com\interview\cisco\WebsiteComparison\AppTest.class
+com\cisco\websitecomparison\AppTest.class
+com\cisco\websitecomparison\controllers\SiteControllerTest.class
