@@ -19,12 +19,11 @@ public class CompareWebsiteServiceTest {
 	
 	@Test
 	public void removeDuplicatesTestMedium() {
-		String input = "THis is Is string has multiple duplicates. It has duplicates because strings "
+		String input = "THis is Is string has multiple duplicates. ()[]It has duplicates because! strings? "
 				+ "are messy.";
 		
 		CompareWebsiteService cws = new CompareWebsiteService();
 		String result = cws.removeDuplicates(input);
-		System.out.println(result);
 
 		assertEquals("this is string has multiple duplicates it because strings are messy", result);
 	}

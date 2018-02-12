@@ -53,9 +53,10 @@ public class CompareWebsiteService {
 
 	public String removeDuplicates(String text) {
 		 
-		text = text.toLowerCase().replaceAll("[.,]", "");
+		text = text.toLowerCase().replaceAll("[.,?!()]", "");
+		text = text.replaceAll("\\[", "").replaceAll("\\]","");
 		
-		String[] words = text.split(" ");
+		String[] words = text.split("\\s+");
 		Set<String> uniqueWords = new LinkedHashSet<String>();
 		for (String word : words) {
 		    uniqueWords.add(word);
@@ -72,8 +73,8 @@ public class CompareWebsiteService {
 	public Integer getTotalOverlappingWords(String firstURL, String secondURL) {
 		
 		int firstCount = 0;
-		String[] firstURLWords = firstURL.split(" ");
-		String[] secondURLWords = secondURL.split(" ");
+		String[] firstURLWords = firstURL.split("\\s+");
+		String[] secondURLWords = secondURL.split("\\s+");
 		
 		for(String word : firstURLWords) {
 			if(Arrays.asList(secondURLWords).contains(word)) {

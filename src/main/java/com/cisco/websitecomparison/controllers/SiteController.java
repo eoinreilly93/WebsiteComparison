@@ -32,6 +32,8 @@ public class SiteController {
 		
 		String JaccardIndex = compareWebsiteService.calculateSimilarityScore(firstURLText, secondURLText);
 		
+		/*String result = "There are " + firstURLText + " unique words in the first URL and " + secondURLText
+				+ " unique words in the second URL. The total JaccardIndex score is + " + JaccardIndex;*/
         return JaccardIndex;
     }
 }
