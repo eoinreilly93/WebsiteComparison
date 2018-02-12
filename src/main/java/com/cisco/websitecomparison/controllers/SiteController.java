@@ -29,8 +29,11 @@ public class SiteController {
 		firstURLText = removeDuplicates(firstURLText);
 		secondURLText = removeDuplicates(secondURLText);
 		
+		int totalOverlappingWords = compareWebsiteService.getTotalOverlappingWords(firstURLText, secondURLText);
+		
         return "There are " + firstURLText.length() + " total unique words in the first url "
-        		+ "\n There are " + secondURLText.length() + " total unique words in the second url";
+        		+ "\n There are " + secondURLText.length() + " total unique words in the second url "
+        				+ " There are " + totalOverlappingWords + " total overlapping words";
     }	
 
 	public String removeDuplicates(String text) {

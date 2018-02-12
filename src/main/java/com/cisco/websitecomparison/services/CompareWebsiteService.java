@@ -3,6 +3,7 @@ package com.cisco.websitecomparison.services;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -46,5 +47,25 @@ public class CompareWebsiteService {
 		
 		return result;				
 	}
-
+	
+	public Integer getTotalOverlappingWords(String firstURL, String secondURL) {
+		
+		int firstCount = 0;
+		String[] firstURLWords = firstURL.split(" ");
+		String[] secondURLWords = secondURL.split(" ");
+		
+		for(String word : firstURLWords) {
+			if(Arrays.asList(secondURLWords).contains(word)) {
+				firstCount++;
+			}
+		}
+		
+		int secondCount = 0;
+		for(String word : secondURLWords) {
+			if(Arrays.asList(firstURLWords).contains(word)) {
+				secondCount++;
+			}
+		}
+		return firstCount > secondCount ? firstCount : secondCount;
+	}
 }
