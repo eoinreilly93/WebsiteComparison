@@ -3,7 +3,10 @@ package com.cisco.websitecomparison.services;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -47,6 +50,24 @@ public class CompareWebsiteService {
 		
 		return result;				
 	}
+
+	public String removeDuplicates(String text) {
+		 
+		text = text.toLowerCase().replaceAll("[.,]", "");
+		
+		String[] words = text.split(" ");
+		Set<String> uniqueWords = new LinkedHashSet<String>();
+		for (String word : words) {
+		    uniqueWords.add(word);
+		}
+
+		StringBuilder sb = new StringBuilder();
+		for (String character : uniqueWords) {
+		    sb.append(character + " ");
+		}
+ 
+        return sb.toString().trim();
+	}
 	
 	public Integer getTotalOverlappingWords(String firstURL, String secondURL) {
 		
@@ -67,5 +88,28 @@ public class CompareWebsiteService {
 			}
 		}
 		return firstCount > secondCount ? firstCount : secondCount;
+	}
+	
+	public Integer getTotalNumberUniqueWords(String firstURLText, String secondURLText) {
+		
+		String combinedWords = firstURLText + " " + secondURLText;
+		String uniqueWords = removeDuplicates(combinedWords);
+		
+		String[] words = uniqueWords.split(" ");
+		
+		return words.length;		
+	}
+	
+	public String calculateSimilarityScore(String firstURLText, String secondURLText) {
+		
+		double totalOverlappingWords = getTotalOverlappingWords(firstURLText, secondURLText);
+		double totalUniqueWords = getTotalNumberUniqueWords(firstURLText, secondURLText);
+		
+		double result = totalOverlappingWords/totalUniqueWords;
+		
+		DecimalFormat df = new DecimalFormat("0.00");
+		String JaccardIndex = df.format(result);
+
+		return JaccardIndex;
 	}
 }

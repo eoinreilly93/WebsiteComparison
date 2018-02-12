@@ -1,5 +1,6 @@
 package com.cisco.websitecomparison.controllers;
 
+import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -26,32 +27,12 @@ public class SiteController {
 		String firstURLText = compareWebsiteService.getUrlContentText(firstUrl);
 		String secondURLText = compareWebsiteService.getUrlContentText(secondUrl);
 		
-		firstURLText = removeDuplicates(firstURLText);
-		secondURLText = removeDuplicates(secondURLText);
+		firstURLText = compareWebsiteService.removeDuplicates(firstURLText);
+		secondURLText = compareWebsiteService.removeDuplicates(secondURLText);
 		
-		int totalOverlappingWords = compareWebsiteService.getTotalOverlappingWords(firstURLText, secondURLText);
+		String JaccardIndex = compareWebsiteService.calculateSimilarityScore(firstURLText, secondURLText);
 		
-        return "There are " + firstURLText.length() + " total unique words in the first url "
-        		+ "\n There are " + secondURLText.length() + " total unique words in the second url "
-        				+ " There are " + totalOverlappingWords + " total overlapping words";
-    }	
-
-	public String removeDuplicates(String text) {
-				 
-		text = text.toLowerCase().replaceAll("[.,]", "");
-		
-		String[] words = text.split(" ");
-		Set<String> uniqueWords = new LinkedHashSet<String>();
-		for (String word : words) {
-		    uniqueWords.add(word);
-		}
-
-		StringBuilder sb = new StringBuilder();
-		for (String character : uniqueWords) {
-		    sb.append(character + " ");
-		}
- 
-        return sb.toString().trim();
-	}
+        return JaccardIndex;
+    }
 }
 	
