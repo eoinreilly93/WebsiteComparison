@@ -1,4 +1,4 @@
-package com.interview.cisco.WebsiteComparison;
+package com.cisco.websitecomparison;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
