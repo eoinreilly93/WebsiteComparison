@@ -72,9 +72,12 @@ public class CompareWebsiteService {
 	
 	public Integer getTotalOverlappingWords(String firstURL, String secondURL) {
 		
+		String firstURLCleaned = removeDuplicates(firstURL);
+		String secondURLCleaned = removeDuplicates(secondURL);
+		
 		int firstCount = 0;
-		String[] firstURLWords = firstURL.split("\\s+");
-		String[] secondURLWords = secondURL.split("\\s+");
+		String[] firstURLWords = firstURLCleaned.split("\\s+");
+		String[] secondURLWords = secondURLCleaned.split("\\s+");
 		
 		for(String word : firstURLWords) {
 			if(Arrays.asList(secondURLWords).contains(word)) {

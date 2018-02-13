@@ -19,7 +19,7 @@ public class CompareWebsiteServiceTest {
 	
 	@Test
 	public void removeDuplicatesTestMedium() {
-		String input = "THis is Is string has multiple duplicates. ()[]It has duplicates because! strings? "
+		String input = "THis is Is string has multiple duplicates ()[]It has duplicates because! strings? "
 				+ "are messy.";
 		
 		CompareWebsiteService cws = new CompareWebsiteService();
@@ -29,7 +29,7 @@ public class CompareWebsiteServiceTest {
 	}
 	
 	@Test
-	public void getTotalOverlappingWordsTest() {
+	public void getTotalOverlappingWordsTestSmall() {
 		
 		String text1 = "This is an apple";
 		String text2 = "This is a book";
@@ -37,6 +37,17 @@ public class CompareWebsiteServiceTest {
 		CompareWebsiteService cws = new CompareWebsiteService();
 		int result = cws.getTotalOverlappingWords(text1, text2);
 		assertEquals(2, result);
+	}
+	
+	@Test
+	public void getTotalOverlappingWordsTestMedium() {
+		
+		String text1 = "This string is not a palidrome";
+		String text2 = "a string contains multiple words, some that could be a palidrome";
+		
+		CompareWebsiteService cws = new CompareWebsiteService();
+		int result = cws.getTotalOverlappingWords(text1, text2);
+		assertEquals(3, result);
 	}
 	
 	@Test
@@ -51,12 +62,22 @@ public class CompareWebsiteServiceTest {
 	}
 	
 	@Test
-	public void calculateSimilarityScoreTest() {
+	public void calculateSimilarityScoreTestSmall() {
 		
 		CompareWebsiteService cws = new CompareWebsiteService();
 		String text1 = "This is an apple";
 		String text2 = "This is a book";
 		String result = cws.calculateSimilarityScore(text1, text2);
 		assertEquals("0.33",result);
+	}
+	
+	@Test
+	public void calculateSimilarityScoreTestMedium() {
+		
+		CompareWebsiteService cws = new CompareWebsiteService();
+		String text1 = "There are four people on a bench, whose names are Eoin, Shane, Sarah and Claire.";
+		String text2 = "There are five people on a bench whose names are Eoin, Tom, Bill and Sarah";
+		String result = cws.calculateSimilarityScore(text1, text2);
+		assertEquals("0.65",result);
 	}
 }
