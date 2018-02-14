@@ -1,3 +1,2 @@
 com\cisco\websitecomparison\AppTest.class
-com\cisco\websitecomparison\controllers\SiteControllerTest.class
 com\cisco\websitecomparison\services\CompareWebsiteServiceTest.class

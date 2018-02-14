@@ -1,3 +1,4 @@
-com\cisco\websitecomparison\App.class
+com\cisco\websitecomparison\exceptions\RestResponseEntityExceptionHandler.class
 com\cisco\websitecomparison\controllers\SiteController.class
 com\cisco\websitecomparison\services\CompareWebsiteService.class
+com\cisco\websitecomparison\App.class
