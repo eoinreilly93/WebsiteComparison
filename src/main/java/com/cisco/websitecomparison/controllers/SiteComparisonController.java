@@ -1,12 +1,5 @@
 package com.cisco.websitecomparison.controllers;
 
-import java.text.DecimalFormat;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cisco.websitecomparison.services.CompareWebsiteService;
 
 @RestController
-public class SiteController {
+public class SiteComparisonController {
 	
 	@Autowired
 	CompareWebsiteService compareWebsiteService;
@@ -33,7 +26,7 @@ public class SiteController {
 		secondURLText = compareWebsiteService.removeDuplicates(secondURLText);
 		
 		String JaccardIndex = compareWebsiteService.calculateSimilarityScore(firstURLText, secondURLText);
-        return JaccardIndex;
+        return "The JaccardIndex is " + JaccardIndex;
     }
 }
 	

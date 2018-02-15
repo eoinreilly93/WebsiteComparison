@@ -13,7 +13,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
  
     @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
-        String bodyOfResponse = "There is something wrong with your request. Please check and try again.";
+        String bodyOfResponse = "There is something wrong with your request. Please re-check and try again.";
         return handleExceptionInternal(ex, bodyOfResponse, 
           new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
