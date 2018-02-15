@@ -11,7 +11,6 @@ However the application will start fine on a windows and linux enviroment using 
 4. You can also call the service by opening a web broswer and naviagating to the links below
 
 
-
 **Three websites to test:**
 
 - http://www.bbc.co.uk/news/uk-england-london-43033511
@@ -36,3 +35,4 @@ However the application will start fine on a windows and linux enviroment using 
 - The JaccardIndex is 0.05
 - The JaccardIndex is 0.06
 - The JaccardIndex is 0.15
+
