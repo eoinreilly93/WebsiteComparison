@@ -20,6 +20,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompareWebsiteService {
 	
+	/**
+	 * Takes in a url, retrieves the content body and returns the page text
+	 * excluding html/css/js tags using Jsoup
+	 * 
+	 * @param url	- Site to retrieve data from
+	 * @return		- Text present on the webpage only
+	 */
 	public String getUrlContentText(String url) {
 		
 		HttpClient client = new DefaultHttpClient();
@@ -50,26 +57,15 @@ public class CompareWebsiteService {
 		
 		return result;				
 	}
-
-	public String removeDuplicates(String text) {
-		 
-		text = text.toLowerCase().replaceAll("[.,?!()]", "");
-		text = text.replaceAll("\\[", "").replaceAll("\\]","");
-		
-		String[] words = text.split("\\s+");
-		Set<String> uniqueWords = new LinkedHashSet<String>();
-		for (String word : words) {
-		    uniqueWords.add(word);
-		}
-
-		StringBuilder sb = new StringBuilder();
-		for (String character : uniqueWords) {
-		    sb.append(character + " ");
-		}
- 
-        return sb.toString().trim();
-	}
 	
+	
+	/**
+	 * Finds the biggest number of recurring or overlapping words between two strings
+	 * 
+	 * @param firstURL			- Input text
+	 * @param secondURL			- Input text
+	 * @return Integer 			- Biggest overlap 
+	 */
 	public Integer getTotalOverlappingWords(String firstURL, String secondURL) {
 		
 		String firstURLCleaned = removeDuplicates(firstURL);
@@ -94,6 +90,13 @@ public class CompareWebsiteService {
 		return firstCount > secondCount ? firstCount : secondCount;
 	}
 	
+	/**
+	 * Finds the number of unique words between two strings
+	 * 
+	 * @param firstURLText			- Input text
+	 * @param secondURLText			- Input text
+	 * @return	Integer 			- Number of unique words
+	 */
 	public Integer getTotalNumberUniqueWords(String firstURLText, String secondURLText) {
 		
 		String combinedWords = firstURLText + " " + secondURLText;
@@ -104,6 +107,39 @@ public class CompareWebsiteService {
 		return words.length;		
 	}
 	
+	/**
+	 * Removes duplicate words from a string input
+	 * 
+	 * @param text		- Full text
+	 * @return			- Text with duplicate words removed
+	 */
+	public String removeDuplicates(String text) {
+		 
+		text = text.toLowerCase().replaceAll("[.,?!()]", "");
+		text = text.replaceAll("\\[", "").replaceAll("\\]","");
+		
+		String[] words = text.split("\\s+");
+		Set<String> uniqueWords = new LinkedHashSet<String>();
+		for (String word : words) {
+		    uniqueWords.add(word);
+		}
+
+		StringBuilder sb = new StringBuilder();
+		for (String character : uniqueWords) {
+		    sb.append(character + " ");
+		}
+ 
+        return sb.toString().trim();
+	}
+	
+	
+	/**
+	 * Determines similarity of two strings based on JaacardIndex formula
+	 * 
+	 * @param firstURLText				- String input
+	 * @param secondURLText				- String input
+	 * @return							- JaacardIndex
+	 */
 	public String calculateSimilarityScore(String firstURLText, String secondURLText) {
 		
 		double totalOverlappingWords = getTotalOverlappingWords(firstURLText, secondURLText);
