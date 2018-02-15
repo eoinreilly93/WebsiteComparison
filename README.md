@@ -10,7 +10,8 @@ However the application will start fine on a windows and linux enviroment using 
 3. Open a new terminal and run the commands below to call the REST service and examine the output
 4. You can also call the service by opening a web broswer and naviagating to the links below
 
-**Troublshooing**
+**Troublshooting**
+
 If you encounter any issues starting the application, repackage the program and re-run the application. To do so run:
 - mvn package && java -jar target/WebsiteComparison-0.0.1-SNAPSHOT.jar 
 
