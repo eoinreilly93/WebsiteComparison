@@ -1,6 +1,6 @@
 ## Notes:
-Follow the instructions below to start the application and call the service. All that is required is Java version 1.8.0_144.
-It should be noted that the terminal commands should ideally be exectuted in a linux environment, as the curl command will not execute correctly using a windows bash emulator such as git bash
+Follow the instructions given below to start the application and call the service. All that is required is Java version 1.8.0_144.
+It should be noted that the terminal commands should ideally be exectuted in a Linux environment, as the curl command will not execute correctly using a windows bash emulator such as git bash
 However the application will start fine on a windows and linux enviroment using the commands below, and can the service can still be called via browser as an alternative.
 
 
